@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+   @await Html.PartialAsync("MetatagsPartial") 
+   @await Html.PartialAsync("CssPartial") 
+</head>
+<body>
+
+    <div class = "sidenav">
+        <div class="UsersBlock">
+            <p>Користувачі</p>
+            <a href="/Admin/Home/Index">Список</a>
+            <a href="/Admin/Users/Create">Створити</a>
+        </div>
+        <div class="PatientsBlock">
+            <p>Пацієнти</p>
+            <a href="/Admin/Patients/Index">Список</a>
+            <a href="/Admin/Patients/Create">Створити</a>
+        </div>
+             
+        <a href="/Admin/Home/Logout" class="logout-btn">Вихід</a>
+    </div>
+    <div class="main">
+        @RenderBody()
+    </div>
+    @await Html.PartialAsync("ScriptsPartial")
+</body>
+</html>

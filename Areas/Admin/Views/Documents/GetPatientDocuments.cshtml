@@ -1,0 +1,44 @@
+﻿@using App.Domain
+@model IEnumerable<Document>
+@*
+    image
+    Doctor
+    Patient
+    Type
+*@
+    <table class="table">
+    <tr>
+        <th>Зображення</th>
+        <th>Тип</th>
+        <th>Ким видана</th>
+        <th>Кому Видана</th>
+        <th></th> @* for delete button*@
+       
+    </tr>
+    @foreach (var document in Model)
+    {
+        <tr>
+            @if(document.ImagePath == null)
+            {
+                <td><img src="~/images/NoDocument.png"/></td>
+            }
+            else
+            {
+                string path = $"~/images/{document.Patient.Name}/Documents/{document.Id}.png";
+
+                <td><img src="@path"></td>
+            }
+            <td>@document.DocumentType</td>
+            <td>@document.AppUser.UserName</td>
+            <td>@document.Patient.Name</td>
+            <td>
+                <form asp-controller="Documents" asp-action="Delete" asp-route-id="@document.Patient.Id" method="post">
+                    <a asp-controller="Documents" asp-action="Edit" asp-route-DocumentId="@document.Id">Редагувати</a>
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

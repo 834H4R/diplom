@@ -1,0 +1,41 @@
+﻿@model LoginViewModel
+ <div class="page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center text-white">Hostpital MVC</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-4">
+                    <form asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
+                        <div asp-validation-summary="All"></div>
+                        <div class="form-group">
+                            <div class="mb-3">
+                                <label class="form-label text-white" asp-for="Login">Логін</label>
+                                <input type="text" class="form-control" id="login-input" aria-describedby="emailHelp" asp-for="Login">
+                                <span class="text-white" asp-validation-for="Login"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="mb-3">
+                                <label class="form-label text-white" asp-for="Password">Пароль</label>
+                                <input type="password" class="form-control" id="password-input" asp-for="Password">
+                                <span class="text-white" asp-validation-for="Password"></span>
+                            </div>                       
+                        </div>
+                        <div class="form-group">
+                            <div class=-mb-3>
+                                <label asp-for="RememberMe"></label>
+                                <input type="checkbox" asp-for="RememberMe"/>
+                                <span asp-validation-for="RememberMe" class="text-white"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Авторизація" class="btn mt-5 custom_btn btn-lg text-uppercase"/>
+                        </div>                                          
+                    </form>
+                </div>
+            </div>
+        </div>
+ </div>

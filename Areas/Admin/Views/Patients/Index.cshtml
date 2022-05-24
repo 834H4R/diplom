@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Patient>
+
+<table class="table">
+    <tr>
+        <th>Фото</th>
+        <th>Ім`я</th>
+        <th>Дата народження</th>
+        <th>Номер телефону</th>
+        <th></th> @* for edit\delete buttons*@
+       
+    </tr>
+    @foreach (var patient in Model)
+    {
+        <tr>
+            @if(patient.ImgPath == null)
+            {
+                <td><img src="~/images/NoPhoto.png"/></td>
+            }
+            else
+            {
+                string n = patient.Name;
+                <td><img src="~/images/n/Photo.png"></td>
+            }
+            <td>@patient.Name</td>
+            <td>@patient.BirthDate.ToString("dd/MM/yyyy")</td>
+            <td>@patient.PhoneNumber</td>
+            <td>
+                <form asp-controller="Users" asp-action="Delete" asp-route-id="@patient.Id" method="post">
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@patient.Id">Редагувати</a>
+                    <a class="btn btn-sm btn-primary" asp-action="GetPatientDocuments" asp-controller="Documents" asp-route-id="@patient.Id">Документи</a>
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Видалити
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

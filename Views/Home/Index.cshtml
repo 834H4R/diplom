@@ -1,0 +1,21 @@
+﻿@using App.Areas.Admin.Models.ViewModels
+@model DoctorProfileViewModel
+<h1>Особистий кабінет @Model.FullName</h1>
+
+@if(Model.ImagePath == null)
+{
+    <img src=~/images/NoPhoto.png/>
+}
+else
+{
+    string n = Model.FullName;
+    <img src=~/images/n/Photo.png>
+}
+<p>@Model.Speciality</p>
+<p>@Model.PhoneNumber</p>
+<p>@Model.Email</p>
+<div class="div-box">
+    <form asp-controller="Account" asp-action="Logout" method="post">
+        <input type="submit" value="Вихід" class="btn mt-5 custom_btn btn-lg text-uppercase"/>
+    </form>
+</div>
